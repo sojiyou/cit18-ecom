@@ -1,45 +1,36 @@
 @extends('layouts.default')
 
-@section('title', 'Thrift Store | Cart')
+@section('title', 'Faith Wear | History')
 
 @section('content')
 
 <main class="container px-4 max-w-[900px] mx-auto min-h-screen">
-   <section>
-      <!-- Grid layout to ensure 4 items per row -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+   @foreach ($ordersWithItems as $order)
+   <div class="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white rounded-lg shadow-lg p-6 mb-6">
+      <div>
+         <h2 class="text-xl font-semibold mb-4">🛒 Order Summary</h2>
+         <p class="text-3xl font-bold text-gray-800 mb-4">Total Price: ₱{{ number_format($order['total_price'], 2) }}</p>
 
-         @foreach($history as $item)
-         <div class="bg-white shadow-lg rounded-lg overflow-hidden">
-            <div class="flex">
-
-               <div class="w-2/3 p-4">
-                  <h5 class="text-lg font-semibold">
-                     <a href="">
-                        {{ $item->title }}
-                     </a>
-                  </h5>
-                  <p class="text-sm text-gray-700">
-                     <h1 class="font-bold">Order #{{$item->id}}</h1>
-                     <span class="font-bold">Price: ₱{{ $item->total_price }}  Quantity: {{$item->quantity}}</span>
-                  </p>
-               </div>
+         <!-- Loop through the products in the order -->
+         @foreach ($order['products'] as $index => $product)
+         <div class="mb-3">
+            <div class="flex justify-between font-medium text-gray-700">
+               <span>{{ $product->title }}</span> <!-- Product Title -->
+               <!-- Multiply price by corresponding quantity from the 'quantity' array -->
+               <span>₱{{ number_format($product->price * (int)$order['quantities'][$index], 2) }}</span> <!-- Total Price (Product Price * Quantity) -->
             </div>
          </div>
          @endforeach
-      </div>
 
-      <div class="mt-4">
-         {{ $history->links() }}
+         <p class="text-gray-600">Address: {{ $order['order']->address }}</p> <!-- Display Order Address -->
       </div>
+   </div>
+   @endforeach
 
-      <div class="mt-6 flex justify-center">
-         <a class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded" href="{{route('home')}}">
-            Back to Home
-         </a>
-      </div>
-
-   </section>
+   <!-- Pagination Links -->
+   <div class="flex justify-center">
+      {{ $orders->links() }}
+   </div>
 </main>
 
 @endsection

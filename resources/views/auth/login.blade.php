@@ -1,5 +1,6 @@
 @extends('layouts.auth')
 
+@section('title', 'Faith Wear | Login')
 @section('content')
 
 <main class="form-signin w-full max-w-md mx-auto">
@@ -54,7 +55,7 @@
          Create New Account
       </a>
 
-      <p class="text-sm text-center text-gray-400">© 2025 FaithWear. All rights reserved.</p>
+      <p class="text-sm text-center text-gray-400 mt-4">© 2025 FaithWear. All rights reserved.</p>
    </form>
 </main>
 

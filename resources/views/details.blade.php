@@ -1,6 +1,6 @@
 @extends('layouts.default')
 
-@section('title', 'Thrift Store | Product Details')
+@section('title', 'Faith Wear | Product Details')
 
 @section('content')
 
@@ -25,7 +25,7 @@
       <p class="text-sm text-gray-600 mt-2 text-center">{{ $product->description }}</p>
 
       <div class="mt-6 flex justify-center">
-         <a href="{{ route('cart.add', $product->id) }}" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
+         <a href="{{ route('cart.add', $product->id) }}" class="btn">
             Add to Cart
          </a>
       </div>

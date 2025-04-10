@@ -5,7 +5,11 @@ use App\Http\Controllers\OrderManager;
 use App\Http\Controllers\ProductsManager;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [ProductsManager::class, 'index'])
+Route::get('/', function() {
+    return view('welcome');
+});
+
+Route::get('/home', [ProductsManager::class, 'index'])
         ->name('home');
 
 Route::get('details/{slug}', [ProductsManager::class, 'show'])
@@ -26,6 +30,12 @@ Route::middleware('auth')->group(function () {
 
     Route::get('history', [OrderManager::class, 'Orderhistory'])
     ->name('order.history');
+
+    Route::get('payment', [OrderManager::class, 'confirmPayment'])
+    ->name('payment.show');
+
+    Route::post('payment', [OrderManager::class, 'paymentPost'])
+    ->name('payment.post');
 
 });
 

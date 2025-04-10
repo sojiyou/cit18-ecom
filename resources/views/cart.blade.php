@@ -1,25 +1,17 @@
 @extends('layouts.default')
 
-@section('title', 'Thrift Store | Cart')
+@section('title', 'Faith Wear | Cart')
 
 @section('content')
+
+@if($cartItems->isEmpty())
+<p class="text-center text-gray-500 font-semibold">Your cart is currently empty.</p>
+@endif
 
 <main class="container px-4 max-w-[900px] mx-auto">
    <section>
       <!-- Grid layout to ensure 4 items per row -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-
-         @if(session()->has("success"))
-         <div class="alert alert-success">
-            {{ session()->get("success") }}
-         </div>
-         @endif
-
-         @if(session("error"))
-         <div class="alert alert-danger">
-            {{ session("error") }}
-         </div>
-         @endif
 
          @foreach($cartItems as $cart)
          <div class="bg-white shadow-lg rounded-lg overflow-hidden">
@@ -45,17 +37,20 @@
          @endforeach
       </div>
 
-      <!-- Pagination -->
+
       <div class="mt-4">
          {{ $cartItems->links() }}
       </div>
 
-      <!-- Checkout Button - Separate from the Grid -->
-      <div class="mt-6 flex justify-center">
-         <a class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded" href="{{route('checkout.show')}}">
-            Checkout
-         </a>
-      </div>
+
+   <div class="mt-6 flex justify-center">
+      @if($cartItems->isNotEmpty())
+      <a class="btn" href="{{ route('checkout.show') }}">
+         Checkout
+      </a>
+      @endif
+   </div>
+
 
    </section>
 </main>

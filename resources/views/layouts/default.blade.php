@@ -3,12 +3,16 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>@yield('title', "Thrift Store")</title>
+   <title>@yield('title', "Faith Wear")</title>
    @vite('resources/css/app.css')
 </head>
-<body>
+<body class="min-h-screen flex flex-col">
    @include('includes.header')
-   @yield('content')
+
+   <main class="flex-grow">
+      @yield('content')
+   </main>
+
    @include('includes.footer')
 </body>
 </html>

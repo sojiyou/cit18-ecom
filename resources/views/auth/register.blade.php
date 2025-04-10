@@ -1,5 +1,6 @@
 @extends('layouts.auth')
 
+@section('title', 'Faith Wear | Register')
 @section('content')
 
 <main class="form-signin w-full max-w-md mx-auto">
@@ -41,13 +42,13 @@
 
       @if(session()->has('success'))
       <div class="mb-4 text-green-600 bg-green-100 p-2 rounded-md">
-         {{ session()->get('success') }}
+         <p>Sign up succesfully</p>
       </div>
       @endif
 
       @if(session('error'))
       <div class="mb-4 text-red-600 bg-red-100 p-2 rounded-md">
-         {{ session('error') }}
+         <p>unable to sign up, try again later</p>
       </div>
       @endif
 
@@ -59,7 +60,7 @@
          Log in
       </a>
 
-      <p class="text-sm text-center text-gray-400">© 2025 FaithWear. All rights reserved.</p>
+      <p class="text-sm text-center text-gray-400 mt-4">© 2025 FaithWear. All rights reserved.</p>
    </form>
 </main>
 

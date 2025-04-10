@@ -1,6 +1,6 @@
 @extends('layouts.default')
 
-@section('title', 'Thrift Store | Checkout')
+@section('title', 'Faith Wear | Checkout')
 
 @section('content')
 
@@ -37,7 +37,7 @@
             <input type="text" class="form-input mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" id="pincode" name="pincode" required>
          </div>
 
-         <button type="submit" class="w-full py-2 px-4 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+         <button type="submit" class="w-full btn">
             Proceed to Payment
          </button>
       </form>
